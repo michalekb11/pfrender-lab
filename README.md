@@ -37,8 +37,14 @@ michalekb. 2020. “Michalekb/N-Most-Diverse-Sequences: N-Most-Diverse-Sequences
 ## RNAseq Analysis: Daphnia Edition
 ### Description
 The R scripts in the GO and GSEA folders were written to assist Elizabeth Brooks in her research and dissertation. 
-Elizabeth's research involves using short paired-end RNAseq reads to investigate how various Daphnia (water fleas) genotypes respond and deal with UV radiation. For example, some daphnia produce melanin, leading to pigmentation and protection against UV waves. Others use various DNA repair methods for which the genes and pathways activated by UV light are not well understood. My work in the Pfrender Lab involved a statistical investigation into the transcriptome changes in response to UV light with particular attention to DNA repair pathways across a mixture of UV tolerant and UV non-tolerant genotypes.  
+Elizabeth's research involves using short paired-end RNAseq reads to investigate how various Daphnia (water fleas) genotypes respond and deal with UV radiation. For example, some daphnia produce melanin, leading to pigmentation and protection against UV waves. Others use various DNA repair methods for which the genes and pathways activated by UV light are not well understood. My work in the Pfrender Lab involved a statistical investigation into the transcriptome changes in response to UV light with particular attention to DNA repair pathways across a mixture of UV tolerant and UV non-tolerant Daphnia genotypes.  
 
 Components of project:
-- <ins>Gene Ontology Analysis (GO):</ins>
-- <ins>Gene Set Enrichment Analysis (GSEA):</ins>
+- <ins>Gene Ontology Analysis (GO):</ins> GO represents a database of gene groups. Each GO term contains a set of genes known to be involved in that respective process/pathway/function. The GO terms themselves can be categorized as either a Biological Process, Cellular Component, or Molecular Function. Given a set of differentially expressed genes, it is possible to determine which GO terms, if any are significantly upregulated or downregulated between the treatment groups. Here, I accomplish this task with the Daphnia UV data.
+- <ins>Gene Set Enrichment Analysis (GSEA):</ins> GSEA is similar to GO in that an expression matrix can be used to determine whether a pre-defined set of genes shows statistically significant differences between two treatment groups. However, this method is not limited to GO terms but rather can include gene sets from other sources (KEGG pathways, researcher-defined gene sets, etc.).  
+  - The general procedure for GSEA involves first developing a linear model for each gene such that many gene-wise test statistics are calculated (can include multiple contrasts for each gene: UV vs VIS, Tolerant vs Not Tolerant, etc.) Then, a gene set test statistic is calculated using either a two sample t test or a Wilcoxon rank sum test. 
+
+### Example Results
+<p align="center">
+<img width="674" alt="Screen Shot 2022-07-26 at 12 59 18 PM" src="https://user-images.githubusercontent.com/109704770/181066338-1a86d74d-51a4-44b4-8e75-dc33cecf24b6.png">
+</p>
