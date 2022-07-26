@@ -2,7 +2,7 @@
 ## Overview
 Projects completed as an undergraduate member of Dr. Michael Pfrender's Evolutionary/Ecological Genomics Lab at the University of Notre Dame. 
 
-## Sequence Diversity & Genetic Barcodes (n_diverse_sequences.R)
+## Sequence Diversity & Genetic Barcodes (n_seq_script.R)
 ### Description
 One use of this code is estimating the variation in genetic barcodes using sequences from a single species. The code reads in a .fasta or .afa file of sequences, aligns the sequences, and can perform any combination of the following:
 - Write a file of aligned sequences
