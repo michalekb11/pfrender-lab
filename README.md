@@ -7,14 +7,17 @@ Projects completed as an undergraduate member of Dr. Michael Pfrender's Evolutio
 One use of this code is estimating the variation in genetic barcodes using sequences from a single species. The code reads in a .fasta or .afa file of sequences, aligns the sequences, and can perform any combination of the following:
 - Write a file of aligned sequences
 - Produce a phylogenic tree of the sequences
-- Write a file containing the names of the 'n' most diverse sequences (use-specified)
+- Write a file containing the names of the 'n' most diverse sequences (user-specified)
 
-### Libraries and versions:
+### Libraries and versions (R):
 - getopt: version 1.20.3  
 - BiocManager: version 1.30.10
 - seqinr: version 3.6-1
 - ape: version 5.3
 - DECIPHER: version 2.14.0
+
+### Input Data
+A .fasta or .afa file containing DNA/RNA sequences.
 
 ### Usage
 Command line usage:
@@ -39,10 +42,20 @@ michalekb. 2020. “Michalekb/N-Most-Diverse-Sequences: N-Most-Diverse-Sequences
 The R scripts in the GO and GSEA folders were written to assist Elizabeth Brooks in her research and dissertation. 
 Elizabeth's research involves using short paired-end RNAseq reads to investigate how various Daphnia (water fleas) genotypes respond and deal with UV radiation. For example, some daphnia produce melanin, leading to pigmentation and protection against UV waves. Others use various DNA repair methods for which the genes and pathways activated by UV light are not well understood. My work in the Pfrender Lab involved a statistical investigation into the transcriptome changes in response to UV light with particular attention to DNA repair pathways across a mixture of UV tolerant and UV non-tolerant Daphnia genotypes.  
 
-Components of project:
-- <ins>Gene Ontology Analysis (GO):</ins> GO represents a database of gene groups. Each GO term contains a set of genes known to be involved in that respective process/pathway/function. The GO terms themselves can be categorized as either a Biological Process, Cellular Component, or Molecular Function. Given a set of differentially expressed genes, it is possible to determine which GO terms, if any are significantly upregulated or downregulated between the treatment groups. Here, I accomplish this task with the Daphnia UV data.
+Project Components:
+- <ins>Gene Ontology Analysis (GO):</ins> GO represents a database of gene groups. Each GO term contains a set of genes known to be involved in that respective process/pathway/function. The GO terms themselves are categorized as either a Biological Process, Cellular Component, or Molecular Function. Given a set of differentially expressed genes, it is possible to determine which GO terms, if any, are significantly upregulated or downregulated between the treatment groups. Here, I accomplish this task with the Daphnia UV data.
 - <ins>Gene Set Enrichment Analysis (GSEA):</ins> GSEA is similar to GO in that an expression matrix can be used to determine whether a pre-defined set of genes shows statistically significant differences between two treatment groups. However, this method is not limited to GO terms but rather can include gene sets from other sources (KEGG pathways, researcher-defined gene sets, etc.).  
-  - The general procedure for GSEA involves first developing a linear model for each gene such that many gene-wise test statistics are calculated (can include multiple contrasts for each gene: UV vs VIS, Tolerant vs Not Tolerant, etc.) Then, a gene set test statistic is calculated using either a two sample t test or a Wilcoxon rank sum test. 
+  - General GSEA procedure: Develop linear model for each gene to calculate gene-wise test statistics (linear model allows for testing multiple contrasts per gene). Calculate a gene set test statistic using t tests or Wilcoxon rank sum tests. 
+
+### Input Data (GSEA)
+1. A .csv containing a matrix of gene expression (or log expression) data with a column name row representing the replicates. 
+2. A factor grouping .csv file containing a column for the replicates (the column names of the expression file) and a column for each contrast (Ex: Treatment = {UV, VIS}, Tolerance = {Tol, NTol})
+
+### Usage (GSEA)
+Command line usage:
+```sh
+Rscript geneSetTesting_allContrastsOlympics_camera.r <expression_file> <factor_grouping_file>
+```
 
 ### Example Results
 <p align="center">
